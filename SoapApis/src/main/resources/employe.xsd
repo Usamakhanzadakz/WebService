@@ -1,0 +1,35 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://com.soapApi.practice.SoapApiss"
+           targetNamespace="http://com.soapApi.practice.SoapApiss"
+           elementFormDefault="qualified">
+
+    <xs:complexType name="emplooyInfo">
+        <xs:sequence>
+            <xs:element name="emplooyesId" type="xs:long"/>
+            <xs:element name="emplooyesName" type="xs:string"/>
+            <xs:element name="emplooyesSallery" type="xs:long"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="serviceStatus">
+        <xs:sequence>
+            <xs:element name="status" type="xs:string"/>
+            <xs:element name="message" type="xs:string"/>
+        </xs:sequence>
+
+    </xs:complexType>
+    <xs:element name="AddEmplooyesRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="emplooyInfo" type="tns:emplooyInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="addEmplooyesResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+                <xs:element name="emplooyInfo" type="tns:emplooyInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
