@@ -8,10 +8,10 @@
 		<version>3.2.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.soapApi.practice</groupId>
-	<artifactId>SoapApis</artifactId>
+	<groupId>com.springapisconsumer</groupId>
+	<artifactId>SoapApisConsumer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>SoapApis</name>
+	<name>SoapApisConsumer</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>
@@ -25,9 +25,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web-services</artifactId>
 		</dependency>
+
 		<dependency>
-			<groupId>wsdl4j</groupId>
-			<artifactId>wsdl4j</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -36,6 +39,7 @@
 		</dependency>
 	</dependencies>
 
+
 	<build>
 		<plugins>
 			<plugin>
@@ -43,21 +47,24 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>jaxb2-maven-plugin</artifactId>
-				<version>3.1.0</version>
+				<groupId>com.sun.xml.ws</groupId>
+				<artifactId>jaxws-maven-plugin</artifactId>
+				<version>3.0.0</version>
 				<executions>
 					<execution>
-						<id>xjc</id>
 						<goals>
-							<goal>xjc</goal>
+							<goal>wsimport</goal>
 						</goals>
 					</execution>
 				</executions>
 				<configuration>
-					<sources>
-						<source>${project.basedir}/src/main/resources/employe.xsd</source>
-					</sources>
+					<packageName>com.springapisconsumer.SoapApisConsumer</packageName>
+					<wsdlUrls>
+						<wsdlUrl>http://localhost:8080/ws/countries.wsdl</wsdlUrl>
+					</wsdlUrls>
+					<sourceDestDir>${sourcesDir}</sourceDestDir>
+					<destDir>${classesDir}</destDir>
+					<extension>true</extension>
 				</configuration>
 			</plugin>
 		</plugins>

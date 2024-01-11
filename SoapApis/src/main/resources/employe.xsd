@@ -1,6 +1,6 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           xmlns:tns="http://com.soapApi.practice.SoapApiss"
-           targetNamespace="http://com.soapApi.practice.SoapApiss"
+           xmlns:tns="http://www.cloudasset.com/intern/soapws/countries"
+           targetNamespace="http://www.cloudasset.com/intern/soapws/countries"
            elementFormDefault="qualified">
 
     <xs:complexType name="emplooyInfo">
